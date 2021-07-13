@@ -1,0 +1,76 @@
+<html>
+    <head>
+        <link type="text/css" rel="stylesheet" href="styles/menu-style.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <style type="text/css">
+        	@import "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css";
+			.circle__during__test, .circle__done__tests, .circle__theme, .circle__logout {
+			    float: left;
+			    font-size: 100px;
+			    margin-left: 20%;
+			    border: 6.5px solid #f7b731;
+			    height: 280px;
+			    border-radius: 200px;
+			    width: 280px;
+			    position: relative;
+			    color: #f7b731;
+			    outline: none;
+			}
+
+			.circle__done__tests {
+			    margin-left: 15%;
+			}
+
+			.circle__theme {
+			    clear: both;
+			    margin: 2% 0 0 20%;
+			}
+
+			.circle__logout {
+			    margin: 2% 0 0 15%;
+			}
+
+			.icon, icon:hover{
+			    position: absolute;               
+			    top: 50%;
+			    left: 50%;
+			    transform: translate(-50%, -50%);
+			    opacity: 1;
+			}
+
+			.circle__during__test:hover, .circle__done__tests:hover, .circle__theme:hover, .circle__logout:hover {
+			    background-color: #100729;
+			    transition: 1s;
+			    opacity: 0.7;
+			}
+        </style>
+        <body style="background-image: linear-gradient(to right bottom, #673e87, #543471, #41295c, #311f47, #211533, #211533, #211533, #211533, #311f47, #41295c, #543471, #673e87);">
+            <a href="{{ url_for('sock') }}" class="circle__during__test"><i class="fa fa-clock-o icon"></i></a>
+            <a href="{{ url_for('showTests') }}" class="circle__done__tests"><i class="fas fa-file-archive icon"></i></a>
+            <a href="{{ url_for('setAlert') }}" class="circle__theme"><i class="icon fas fa-cog"></i></a>
+            <a href="{{ url_for('userLogout') }}" class="circle__logout"><i class="fas fa-power-off icon"></i></a>
+        </body>
+        <script>
+        	
+        	function showNotification() {
+				const notification = new Notification("Test finished!", {
+					body: "Check results in the app."
+				});
+			}
+			console.log(Notification.permission);
+			const myFunc = async () => {
+				await delay(5000);
+			if(Notification.permission === "granted") {
+				showNotification();
+			} else if (Notification.permission !== "denided") {
+				Notification.requestPermission().then(permission => {
+					if(permission === "granted") {
+						console.log(permission)
+						showNotification();
+					}
+				})
+			}
+			}
+        </script>
+    </head>
+</html>

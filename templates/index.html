@@ -1,0 +1,74 @@
+<html>
+	<head>
+		<title>Socket-Test</title>
+		<script src="//code.jquery.com/jquery-1.12.4.min.js"></script>
+		<script src="//cdnjs.cloudflare.com/ajax/libs/socket.io/2.2.0/socket.io.js"></script>
+		<script type="text/javascript" charset="utf-8">
+			$(document).ready(function() {  
+				const socket = io(); 
+					socket.on('getData', function(msg) {
+					console.log('ele') 
+						{% if data is defined %} 
+							if('{{data[0][1]}}' == msg.test_name) { 
+								$('#data').append('<span style="font-weight: bold;">' + msg.count);
+								$('#data').append(': </span> <b>Axial Force: </b>' + msg.force);
+								$('#data').append(', ');
+								$('#data').append('<b>Axial Displacement: </b>' + msg.displacement);
+								$('#data').append('<br>');
+							} else {  
+								window.location.reload(true); 
+							}
+						{% else %} 
+								window.location.reload(true);
+						{% endif %}
+					});
+			});
+		</script>
+
+		<style>
+	        @import "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css";
+
+	        body {
+	            font-family: Lato;
+	        }
+
+	        .menu {
+	            top: 50%;
+	            transform: translate(0, -50%);
+	            border: 2px solid white;
+	            width: 55%;
+	            height: 500px;
+	            padding: 10px;
+	            margin: auto;
+	            background-color: white;
+	            opacity: 0.8;
+	            position: fixed;
+	        }
+
+
+	        .container {
+	        	background-image: linear-gradient(to right bottom, #673e87, #543471, #41295c, #311f47, #211533, #211533, #211533, #211533, #311f47, #41295c, #543471, #673e87);
+	           	display: flex;
+	        	flex-direction: row;
+	        	flex-wrap: nowrap;
+	        	justify-content: center;
+	        	align-content: stretch; 
+	        	align-items: flex-start;
+	        	padding: 10px;
+	        	overflow: auto;
+	        }
+
+	    </style>
+
+	</head>
+	<body class="container">
+			<div id="data" class="menu">
+			<h2 style="margin-left: 35%">Nazwa testu: {{ data[0][1] if data is defined else 'Brak testu'}}</h2>
+				{% if data is defined %} 
+					{% for row in data %} 
+						<div style="font-size: 16px"><b>{{row[2]}}:</b> <b>Axial Force: </b>{{row[3]}} [kN], <b style="padding-left: 5em">Axial Displacement: </b>{{row[4]}} [mm]</div><br>  
+					{% endfor %}
+				{% endif %}
+			</div>
+	</body>
+</html>

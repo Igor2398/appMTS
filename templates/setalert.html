@@ -1,0 +1,97 @@
+<html>
+    <head>
+        <link type="text/css" rel="stylesheet" href="styles/menu-style.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <style>
+            
+            body {
+                background-image: linear-gradient(to right bottom, #673e87, #543471, #41295c, #311f47, #211533, #211533, #211533, #211533, #311f47, #41295c, #543471, #673e87);
+                background-color: #1A1919;
+                background-size: cover;
+                background-position: center;
+                font-family: Lato;
+            }
+
+
+            .container {
+                width: 500px;
+                padding: 40px;
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                background-color: whitesmoke;
+                opacity: 0.85;
+                box-shadow: 0px 10px 50px rgba(0, 0, 0, 0.3);
+                overflow: hidden;
+                text-align: center;
+            } 
+
+            .container input[type="text"] {
+                width: 300px;
+                text-align: center;
+                padding: 15px 10px;
+                color: black;
+                background: none;
+                display: block;
+                margin: 30px auto;
+                border: 2px solid #BF2E2E;
+                border-radius: 25px;
+                outline: none; 
+                margin-bottom: -5px;
+                transition: 1ms;
+            }
+
+            .container input[type="text"]:focus {
+                border-color: purple;
+                width: 350px;
+            }
+
+            .setAlert__button { 
+                width: 150px;
+                text-align: center;
+                padding: 15px 10px;
+                color: black;
+                background: none;
+                display: block;
+                margin: 20px auto;
+                border: 2px solid #BF2E2E;
+                border-radius: 25px;
+                outline: none; 
+                margin-bottom: -5px;
+                transition: 0.5ms;
+                cursor: pointer;
+            }
+
+            .setAlert__button:hover {
+                background-color:#BF2E2E;
+                transition: 900ms;
+            }
+
+        </style>
+        <body>
+            <div class="container">
+                <input class="alertInput" type="text" placeholder="np. 20" id="alertInp" onkeypress="isNum(event)"><br>
+                <button type="button" class="setAlert__button" value="Set Alert" onclick="getInputValue();"> Set Alert </button><br> 
+            </div>
+        </body>
+        <script>
+            let cycles = function getInputValue() {
+                let inputVal = document.getElementById("alertInp").value
+                if(inputVal !== '') {
+                    console.log(inputVal)   
+                } else {
+                    alert("This field can not be empty")
+                }
+                return inputVal
+            }
+
+            function isNum(evt) {
+                let ch = String.fromCharCode(evt.which);
+                if(!(/[0-9]/.test(ch))) {
+                    evt.preventDefault();
+                }
+            }
+        </script>
+    </head>
+</html>

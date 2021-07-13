@@ -1,0 +1,103 @@
+<html>
+    <head>
+        <link href="https://fonts.googleapis.com/css?family=Lato:100,300,600" rel="stylesheet" type="text/css">
+        <link href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css" rel="stylesheet" type="text/css">
+        <link type="text/css" rel="stylesheet" href="../styles/style.css">
+        <style>
+        	@import "https://use.fontawesome.com/releases/v5.5.0/css/all.css";
+
+body {
+    background-image: linear-gradient(to right bottom, #673e87, #543471, #41295c, #311f47, #211533, #211533, #211533, #211533, #311f47, #41295c, #543471, #673e87);
+    background-color: #1A1919;
+    background-size: cover;
+    background-position: center;
+    font-family: Lato;
+}
+
+.login__container {
+    width: 500px;
+    padding: 40px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: whitesmoke;
+    opacity: 0.85;
+    box-shadow: 0px 10px 50px rgba(0, 0, 0, 0.3);
+    overflow: hidden;
+    text-align: center;
+} 
+
+.login__container input[type="text"], .login__container input[type="password"] {
+    width: 300px;
+    text-align: center;
+    padding: 15px 10px;
+    color: black;
+    background: none;
+    display: block;
+    margin: 30px auto;
+    border: 2px solid #BF2E2E;
+    border-radius: 25px;
+    outline: none; 
+    margin-bottom: -5px;
+    transition: 1ms;
+}
+
+.login__container input[type="text"]:focus, .login__container input[type="password"]:focus{
+    border-color: purple;
+    width: 350px;
+}
+
+.login__button { 
+    width: 150px;
+    text-align: center;
+    padding: 15px 10px;
+    color: black;
+    background: none;
+    display: block;
+    margin: 20px auto;
+    border: 2px solid #BF2E2E;
+    border-radius: 25px;
+    outline: none; 
+    margin-bottom: -5px;
+    transition: 0.5ms;
+    cursor: pointer;
+}
+
+.login__button:hover {
+    background-color:#BF2E2E;
+    transition: 900ms;
+}
+
+.login__container i{
+    width: 26px;
+    float: left;
+    text-align: center;
+  }
+
+h1 {
+    text-align: center;
+    color: #BF2E2E;
+}
+
+h4 {
+    text-decoration: none;
+    text-align: left;
+    color: red;
+}
+
+a {
+    text-decoration: none;
+}
+        </style>
+        <body>
+            <h1>Welcome to remote controll system MTS Test Suite!</h1>
+            <form action="{{ url_for('userLogin') }}" method="post" class="login__container">
+                <input class="login__input" type="text" placeholder="Login", name="username" required> <br>
+                <input class = "login__input" type="password" placeholder="Password" name="password" required><br>
+                <div>{{msg}}</div>
+                <input type="submit" class="login__button" value="Login"><br>
+            </form>
+        </body>
+    </head>
+</html>

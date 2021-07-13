@@ -1,0 +1,24 @@
+<html>
+<head>
+	<title>Socket-Test</title>
+	<script src="//code.jquery.com/jquery-1.12.4.min.js"></script>
+	<script src="//cdnjs.cloudflare.com/ajax/libs/socket.io/2.2.0/socket.io.js"></script>
+</head>
+<body style="background-image: linear-gradient(to right bottom, #673e87, #543471, #41295c, #311f47, #211533, #211533, #211533, #211533, #311f47, #41295c, #543471, #673e87); color: white;">
+	<h1 style="background-color: #333138;"> Baza testow </h1>
+	<h2 style="background-color: #2D3142;">Wynik: {{ data[0][1] if data is defined else 'Brak testu!'}}</h2>
+	<div id="data">
+		<ul>
+			{% if data is defined %}
+			{% for row in data %}
+				<span style="font-weight: bold;">{{row[2]}}: </span> <b>Axial Force: </b>{{row[3]}}, <b>Axial Displacement: </b>{{row[4]}}<br>
+			{% endfor %}
+		{% endif %}
+		<form method="POST" action="/del">
+			<input type="hidden" name="test_name" value="{{ data[0][1] }}">
+			<input type="submit" value="Usun test">
+		</form>
+		</ul>
+	</div>
+</body>
+</html>

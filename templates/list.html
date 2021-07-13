@@ -1,0 +1,74 @@
+<html>
+<head>
+	<title>Socket-Test</title>
+	<script src="//code.jquery.com/jquery-1.12.4.min.js"></script>
+	<script src="//cdnjs.cloudflare.com/ajax/libs/socket.io/2.2.0/socket.io.js"></script>
+	<style type="text/css">
+        @import "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css";
+
+        body {
+            font-family: Lato;
+        }
+
+        .menu {
+            top: 50%;
+            transform: translate(0, -50%);
+            border: 2px solid white;
+            width: 55%;
+            height: 500px;
+            padding: 10px;
+            margin: auto;
+            background-color: white;
+            opacity: 0.7;
+            position: fixed;
+            display: flex;
+        	flex-direction: row;
+        	flex-wrap: nowrap;
+        	justify-content: center;
+        	align-content: stretch; 
+        	align-items: flex-start;
+
+        }
+
+        .container {
+        	background-image: linear-gradient(to right bottom, #673e87, #543471, #41295c, #311f47, #211533, #211533, #211533, #211533, #311f47, #41295c, #543471, #673e87);
+           	display: flex;
+        	flex-direction: row;
+        	flex-wrap: nowrap;
+        	justify-content: center;
+        	align-content: stretch; 
+        	align-items: flex-start;
+        	padding: 10px;
+        	overflow: auto;
+        }
+
+        .list__button {
+        	border: 3px solid #f7b731;
+        	border-radius: 10px;
+        	padding: 5px 10px;
+        	color: #f7b731;
+        	background: none;
+        	outline: none;
+        	cursor: pointer;
+    		align-items: 'center';
+    		justify-content:'center';
+		    flex: 1;
+		    flex-direction: 'column';
+		    font-size: 20px;
+        }
+	</style>
+</head>
+<body class="container">
+	<div id="data" class="menu">
+		<ul>
+			{% if data is defined %}
+				{% for row in data %}
+						<form method="POST" action="/show">
+							<input class="list__button" type="submit" name="test_name" value="{{row[0]}}">
+						</form>
+				{% endfor %}
+			{% endif %}
+		</ul>
+	</div>
+</body>
+</html>
