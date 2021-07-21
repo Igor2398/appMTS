@@ -71,6 +71,7 @@ def getData():
     cursor.close()
     socketio.emit('getData', res)
     return res
+    
 
 
 @app.route('/list')
